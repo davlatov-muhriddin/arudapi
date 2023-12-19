@@ -2,11 +2,14 @@ import express from "express";
 import dotenv from "dotenv";
 import connectToDatabse from "./database/index.js";
 import animeRouter from "./router/anime.js";
+import cors from "cors";
 
 const app = express();
 dotenv.config();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 app.use("/api/anime", animeRouter);
 
 connectToDatabse();
