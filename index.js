@@ -10,11 +10,10 @@ dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.use("/api/anime", animeRouter);
 
 connectToDatabse();
 
-app.get("/", (req, res) => {
+app.get("/apiinfo", (req, res) => {
   res.json({
     getAll: " /api/anime -> get all anime |get|",
     getSingle: "/api/anime/:id -> get single anime |get|",
@@ -23,6 +22,8 @@ app.get("/", (req, res) => {
     delete: " /api/anime/delete/:id -> remove anime |delete|",
   });
 });
+
+app.use("/api/anime", animeRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`server is running on port ${process.env.PORT}`);
