@@ -13,16 +13,6 @@ app.use(cors());
 
 connectToDatabse();
 
-app.get("/apiinfo", (req, res) => {
-  res.json({
-    getAll: " /api/anime -> get all anime |get|",
-    getSingle: "/api/anime/:id -> get single anime |get|",
-    create: "/api/anime/create -> create anime |post|",
-    update: "/api/anime/update/:id -> update anime |put|",
-    delete: " /api/anime/delete/:id -> remove anime |delete|",
-  });
-});
-
 app.use("/api/anime", animeRouter);
 
 app.listen(process.env.PORT, () => {
